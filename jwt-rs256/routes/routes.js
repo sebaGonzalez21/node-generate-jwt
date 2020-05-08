@@ -19,7 +19,8 @@ router.post('/api/v1/jwt', (req, res) => {
             exp: new Date().getTime() + segundosVencimiento,
             iss: emailCuentaServicio,
             aud: urlService,
-            sub: emailCuentaServicio
+            sub: emailCuentaServicio,
+            email: emailCuentaServicio
         };
         const token = jwt.sign(payload, privateKey, { algorithm });
         logger.info("token generado exitosamente");
