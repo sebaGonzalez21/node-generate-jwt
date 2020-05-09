@@ -22,9 +22,9 @@ router.post('/api/v1/jwt', (req, res) => {
             sub: emailCuentaServicio,
             email: emailCuentaServicio
         };
-        const token = jwt.sign(payload, privateKey, { algorithm });
+        const token = 'Bearer '+jwt.sign(payload, privateKey, { algorithm });
         logger.info("token generado exitosamente");
-        res.status(200).json(token);
+        res.status(200).json({token:  token});
     } catch (err) {
         logger.error(err);
         res.status(500).json("error en generacion de token");
